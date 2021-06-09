@@ -13,7 +13,7 @@ socketCount14 = 3;
 
 trayWidth = 90;
 trayDepth = 150;
-trayHeight = 10;
+trayHeight = 1;
 trayBaseHeight = 14;
 
 socketBuffer = 4;
@@ -54,5 +54,5 @@ upperDiameter14 = 11;
 trayRoudedBase(trayWidth, trayDepth, trayBaseHeight, slopeSize, resolution, true);
 
 translate([0,0,trayBaseHeight]){
-    createTray(trayWidth, trayDepth, trayBaseHeight, socketBuffer, socketCount12, connectionHeight12, connectionWidth12, baseDiameter12, socketCount38, connectionHeight38, connectionWidth38, baseDiameter38, socketCount14, connectionHeight14, connectionWidth14, baseDiameter14, resolution);
+    createTray(trayWidth, trayDepth, trayHeight, socketBuffer, socketCount12, connectionHeight12, connectionWidth12, baseDiameter12, socketCount38, connectionHeight38, connectionWidth38, baseDiameter38, socketCount14, connectionHeight14, connectionWidth14, baseDiameter14, resolution);
 }

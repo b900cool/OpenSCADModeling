@@ -1,6 +1,6 @@
-include <../Libs/BOSL-master/constants.scad>
-include <../Libs/BOSL-master/transforms.scad>
-use <../Libs/BOSL-master/masks.scad>
+include <BOSL/constants.scad>
+include <BOSL/transforms.scad>
+use <BOSL/masks.scad>
 
 // d: Diameter of the outer cylinder wall
 // h: Height of the cylinder

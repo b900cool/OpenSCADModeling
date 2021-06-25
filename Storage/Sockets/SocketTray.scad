@@ -1,5 +1,5 @@
 use<SocketBase.scad>
-use<../../Models/Socket.scad>
+use<Socket.scad>
 
 module createTray(trayWidth, trayDepth, trayBaseHeight, socketBuffer, socketCount12, connectionHeight12, connectionWidth12, baseDiameter12, socketCount38, connectionHeight38, connectionWidth38, baseDiameter38, socketCount14, connectionHeight14, connectionWidth14, baseDiameter14, resolution){
     

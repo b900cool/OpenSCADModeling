@@ -1,8 +1,8 @@
-include <../Libs/BOSL-master/constants.scad>
-include <../Libs/BOSL-master/transforms.scad>
+include <BOSL/constants.scad>
+include <BOSL/transforms.scad>
 include <../Models/HollowCylinder.scad>
 include <../Models/PegboardHook.scad>
-use <../Libs/BOSL-master/masks.scad>
+use <BOSL/masks.scad>
 
 //Global Variables
 Count = 2;

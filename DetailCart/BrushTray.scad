@@ -1,5 +1,5 @@
-include <../Libs/BOSL-master/constants.scad>
-use <../Libs/BOSL-master/masks.scad>
+include <BOSL/constants.scad>
+use <BOSL/masks.scad>
 use <../Models/BevelSquare.scad>
 
 testFit = false;

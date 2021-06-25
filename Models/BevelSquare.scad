@@ -1,5 +1,5 @@
-include <../Libs/BOSL-master/constants.scad>
-use <../Libs/BOSL-master/masks.scad>
+include <BOSL/constants.scad>
+use <BOSL/masks.scad>
 use <BevelCorner.scad>
 
 //Creates a beveled Rectangle with or without fillet to be used as a difference for creating trays
@@ -71,4 +71,4 @@ module bevelSquare(width, depth, height, cubeFillet, topFillet, resolution){
     }
 }
 
-bevelRectangle(50,100,50,10,0,100);
+//bevelSquare(50,100,50,10,0,100);

@@ -1,4 +1,3 @@
-use<obiscad-master/obiscad/bevel.scad>
 use<SocketBase.scad>
 
 connectionHeight = 15;

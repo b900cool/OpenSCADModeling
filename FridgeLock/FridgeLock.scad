@@ -1,7 +1,7 @@
-include <../Libs/BOSL-master/constants.scad>
-use <../Libs/BOSL-master/masks.scad>
+include <BOSL/constants.scad>
+use <BOSL/masks.scad>
 
-screwWidth = 25;
+screwCutoutWidth = 25;
 
 slotWidth = 2.5;
 
@@ -15,6 +15,8 @@ pillarResolution = 100;
 frontHeight = 14;
 backHeight = 12;
 
+chamferSize = 1;
+
 frontDepthExtra = 10;
 
 backDepth = 20;
@@ -24,10 +26,15 @@ width = 50;
 depth = backDepth + slotWidth + frontDepth;
 height = 10;
 
+baseSize = [width, depth, height];
+frontSize = [width, frontDepth, frontHeight];
+backSize = [width, backDepth, backHeight];
+screwCutoutSize = [screwCutoutWidth, backDepth, backHeight];
+
 //Base cube
-translate([width/2, depth/2, height/2]){
-    chamfer(chamfer=1, size=[width, depth, height], edges=EDGES_ALL - EDGES_TOP){
-        cube(size=[width, depth, height], center=true);
+translate(baseSize/2){
+    chamfer(chamfer=chamferSize, size=baseSize, edges=EDGES_ALL - EDGES_TOP){
+        cube(size=baseSize, center=true);
     }
 }
 
@@ -35,9 +42,9 @@ translate([width/2, depth/2, height/2]){
 translate([0,0,height]){
     //Front height cube
     difference(){
-        translate([width/2, frontDepth/2, frontHeight/2]){
-            chamfer(chamfer=1, size=[width, frontDepth, frontHeight], edges= EDGES_ALL - EDGES_BOTTOM){
-                cube(size=[width, frontDepth, frontHeight], center=true);
+        translate(frontSize/2){
+            chamfer(chamfer=chamferSize, size=frontSize, edges= EDGES_ALL - EDGES_BOTTOM){
+                cube(size=frontSize, center=true);
             }
         }
         
@@ -51,13 +58,13 @@ translate([0,0,height]){
     //Behind slot
     translate([0, frontDepth + slotWidth, 0]){
         difference(){
-            translate([width/2, backDepth/2, backHeight/2]){
-                chamfer(chamfer=1, size=[width, backDepth, backHeight], edges= EDGES_ALL - EDGES_BOTTOM){
-                cube(size=[width, backDepth, backHeight], center=true);
+            translate(backSize/2){
+                chamfer(chamfer=chamferSize, size=backSize, edges= EDGES_ALL - EDGES_BOTTOM){
+                cube(size=backSize, center=true);
                 }
             }
-            translate([width/2, screwWidth/2, screwWidth/2]){
-                cube(screwWidth, true);
+            translate([screwCutoutWidth/2, 0, 0]){
+                cube(screwCutoutSize, false);
             }   
         }
     }

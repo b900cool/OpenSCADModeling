@@ -1,4 +1,4 @@
-use <../../Libs/obiscad-master/obiscad/bevel.scad>
+use <obiscad/obiscad/bevel.scad>
 
 module trayRoudedBase(trayWidth, trayDepth, trayHeight, slopeSize, resolution, printCenter){
     difference(){

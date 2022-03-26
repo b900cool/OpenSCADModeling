@@ -6,9 +6,9 @@ $fn=30;
 
 fillet = 1.5;
 
-sensorWidth = 68;
-sensorDepth = 42;
-sensorHeight = 22;
+sensorWidth = 67;
+sensorDepth = 41;
+sensorHeight = 21;
 
 sensor = [sensorWidth, sensorDepth, sensorHeight];
 
@@ -30,11 +30,11 @@ difference(){
     
     forward(sensorDepth/2 - shadeThickness/2) right(sensorWidth/2 - shadeThickness*2)cube([30, shadeThickness, sensorHeight], center = true);
     
-    back(sensorDepth/2 - shadeThickness/2 - cylinderDiameter/2 - shadeThickness)
-    right(sensorWidth/2 - cylinderDiameter/2)
+    back(sensorDepth/2 - shadeThickness/2 - cylinderDiameter/2 - shadeThickness + 2)
+    right(sensorWidth/2 - cylinderDiameter/2 - 2)
     #cylinder(d=cylinderDiameter, h=cylinderHeight, center=true);
-    forward(sensorDepth/2 - shadeThickness/2 - cylinderDiameter/2 - 2)
-    left(sensorWidth/2 - cylinderDiameter/2 - shadeThickness)
+    forward(sensorDepth/2 - shadeThickness/2 - cylinderDiameter/2 - 4)
+    left(sensorWidth/2 - cylinderDiameter/2 - shadeThickness - 2)
     #cylinder(d=cylinderDiameter, h=cylinderHeight, center=true);
 }
 

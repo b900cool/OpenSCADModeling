@@ -20,7 +20,7 @@ screwHeadDepth = 5;
 
 backPlate = [motorBodyWidth + armSize*2, backPlateDepth, armHeight];
 hookBase = [motorBodyWidth + armSize*2, motorBodyWidth + armSize*2, armHeight];
-cutout = [53, (motorBodyWidth + armSize*2)/2 + 1, armHeight];
+cutout = [60, (motorBodyWidth + armSize*2)/2 + 1, armHeight];
 
 difference(){
     union(){

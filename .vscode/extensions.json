@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "streetsidesoftware.code-spell-checker",
+        "oderwat.indent-rainbow",
+        "davidanson.vscode-markdownlint",
+        "antyos.openscad",
+        "leathong.openscad-language-support",
+        "gruntfuggly.todo-tree"
+    ]
+}

@@ -1,0 +1,8 @@
+# Don't commit stl or GCODE files
+*.stl
+*.GCODE
+
+# Don't commit zip or tar
+*.zip
+*.tar.gz
+*.tar

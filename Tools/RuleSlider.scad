@@ -1,7 +1,7 @@
-use<BOSL\transforms.scad>
-use<BOSL\masks.scad>
-use<nutsnbolts\files\Threading.scad>
-include<BOSL\constants.scad>
+use <BOSL\transforms.scad>
+use <BOSL\masks.scad>
+use <nutsnbolts\files\Threading.scad>
+include <BOSL\constants.scad>
 
 $fn=100;
 

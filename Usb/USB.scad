@@ -1,4 +1,4 @@
-use <../Libs/obiscad-master/obiscad/bevel.scad>
+use <obiscad/obiscad/bevel.scad>
 use <../Models/BevelCorner.scad>
 
 module usb_bevel(bevelDepth, bevelResolution){

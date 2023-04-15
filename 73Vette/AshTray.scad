@@ -1,7 +1,7 @@
 use <../Models/BevelSquare.scad>
-use <../Libs/BOSL-master/masks.scad>
-use <../Libs/obiscad-master/obiscad/bcube.scad>
-use <../Libs/obiscad-master/obiscad/bevel.scad>
+use <BOSL/masks.scad>
+use <obiscad/obiscad/bcube.scad>
+use <obiscad/obiscad/bevel.scad>
 
 // 58mm long
 length = 58;

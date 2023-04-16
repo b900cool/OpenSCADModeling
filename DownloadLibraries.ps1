@@ -11,21 +11,23 @@ function Save-GitHubRepository
         [string]$Branch = 'master'
     )
 
+    $destinationPath = "C:\Program Files\OpenSCAD\libraries\$Project"
     $outputFile = "$Project.zip"
 
+    # Download Library Source
     curl.exe -L https://github.com/$Owner/$Project/archive/$Branch.zip -o $outputFile
 
-    $destinationPath = "C:\Program Files\OpenSCAD\libraries\$Project"
-
+    # Unzip and reshuffle files
     Expand-Archive $outputFile -Force
-
     Get-ChildItem .\$Project\$Project-$Branch\ | ForEach-Object { Move-Item .\$Project\$Project-$Branch\$_ -Destination .\$Project }
+    
+    # Cleanup before moving
     Remove-Item .\$Project\$Project-$Branch\
-
     Remove-Item $destinationPath -Force -Recurse
 
     Move-Item .\$Project -Destination $destinationPath -Force
 
+    # Cleanup Zip
     Remove-Item $outputFile
 }
 
@@ -42,18 +44,21 @@ function Save-GitHubReleaseTar
         [string]$ArtifactName
     )
     $outputFile = "$Project.tar.gz"
-
-    curl.exe -L https://github.com/$Owner/$Project/releases/latest/download/$ArtifactName -o $outputFile
-    
     $destinationPath = "C:\Program Files\OpenSCAD\libraries\$Project"
 
+    # Download Github Release File
+    curl.exe -L https://github.com/$Owner/$Project/releases/latest/download/$ArtifactName -o $outputFile
+    
+    # Extract tarball
     mkdir "$PWD\$Project"
     tar.exe -xf $outputFile --directory "$PWD\$Project"
 
+    # Cleanup Destination
     Remove-Item $destinationPath -Force -Recurse
 
     Move-Item .\$Project -Destination $destinationPath -Force
 
+    # Cleanup Tarball
     Remove-Item $outputFile
 }
 

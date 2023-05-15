@@ -1,7 +1,7 @@
 use <BOSL\transforms.scad>
 use <BOSL\masks.scad>
-use <nutsnbolts\files\Threading.scad>
-include <BOSL\constants.scad>
+use <BOSL\constants.scad>
+use <threads-scad/threads.scad>
 
 $fn=100;
 
@@ -29,10 +29,7 @@ sliderCutout = [sliderLength, sliderCutoutSize, sliderThickness/2];
 
 boltLength = triangleHeight + sliderThickness/2 + 1;
 boltDiameter = 20;
-boltPitch = 3;
-boltWindings = 3;
-boltAngle = 75;
-boltFill = true;
+
 
 difference(){
     union(){
@@ -62,8 +59,10 @@ difference(){
     }
 
     translate([0,0,triangleHeight*2 + sliderThickness -8 ]){
-        rotate([0,180,0]){
-            #threading(pitch=boltPitch, d=boltDiameter, windings=boltWindings, angle=boltAngle, full=boltFill);
+        up(boltDiameter){
+            rotate([0,180,0]){
+                #MetricBolt(boltDiameter, boltLength);
+            }
         }
     }
 }

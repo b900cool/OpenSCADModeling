@@ -1,5 +1,5 @@
-include<BOSL/masks.scad>
-include<BOSL/transforms.scad>
+include <BOSL/masks.scad>
+include <BOSL/transforms.scad>
 
 $fn = 100;
 chamfer = 1;
@@ -22,9 +22,6 @@ channelHeight = sensorHeight;
 
 screwEdgeOffset = chamfer + screwHeadDiameter/2;
 
-
-
-
 channel = [channelWidth, channelDepth, channelHeight];
 sensor = [sensorWidth, sensorDepth, sensorHeight];
 block = [width, depth, height];
@@ -43,7 +40,6 @@ difference(){
             }
         }
     }
-    
     
     forward(depth/2 - screwEdgeOffset){
         left(width/2 - screwEdgeOffset){

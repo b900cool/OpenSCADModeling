@@ -11,3 +11,4 @@ Library References:
 - Obiscad: <https://github.com/Obijuan/obiscad>
 - BOSL: <https://github.com/revarbat/BOSL>
 - Bolts: <https://github.com/boltsparts/BOLTS_archive/releases>
+- Threads: <https://github.com/rcolyer/threads-scad>

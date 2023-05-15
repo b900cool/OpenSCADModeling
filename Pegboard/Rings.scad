@@ -1,8 +1,10 @@
 include <BOSL/constants.scad>
-include <BOSL/transforms.scad>
-include <../Models/HollowCylinder.scad>
-include <../Models/PegboardHook.scad>
+use <BOSL/transforms.scad>
+use <../Models/HollowCylinder.scad>
+use <../Models/PegboardHook.scad>
+use <../Models/ParametricRings.scad>
 use <BOSL/masks.scad>
+
 
 //Global Variables
 Count = 2;
@@ -55,24 +57,8 @@ backSizeHalf = backSize/2;
 
 // Create Circles
 // Translate to start at X = 0, y = depth
-translate([diameter/2,diameter/2 + depth,0]){
-    for (i = [0 : 1 : Count - 1])
-    {
-        for(j = [0 : 1 : Rows - 1])
-        {   
-            // Translate each ring in a row by a diameter - a fraction of the thickness to provide some overlap between rings
-            translateX = (i * diameter) - ((thickness*overlapRatio) * i);
-            
-            // Translate each ring in a column by a diameter - a fraction of the thickness to provide some overlap between rings. Add one to j to get the overlap with the back piece
-            translateY = (j * diameter) - ((thickness*overlapRatio) * j + 1);
-            
-            translate([translateX, translateY, 0]){
-                hollowCylinder(diameter, height, thickness, resolution, filletSize, holeChamferSize);
-                cylinder(d=diameter, h=BaseHeight);
-            }
-        }
-
-    }
+translate([0,depth,0]){
+    parametricRings(Count, Rows, diameter, height, thickness, overlapRatio, filletSize, holeChamferSize);
 }
 
 // Construct the back piece

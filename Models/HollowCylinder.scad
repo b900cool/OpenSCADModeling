@@ -9,7 +9,7 @@ use <BOSL/masks.scad>
 // filletSize: Size of the fillet on the top and bottom of the cylinder
 // holeFilletSize: size of the fillet on the opening of the top of the cylinder
 // filletOverage: Overage added to the hole fillet. Only required if the default overage (.2) is not enough to remove artifacting over the fillet
-module hollowCylinder(d=5, h=10, wallWidth=2, $fn=128, filletSize=1, holeFilletSize=3, filletOverage=.2)
+module hollowCylinder(d=5, h=10, wallWidth=2, filletSize=1, holeFilletSize=3, filletOverage=.2)
 {
 	difference()
 	{

@@ -37,7 +37,7 @@ holeRadius = holeDiameter/2;
 holeSpacingEdgeToEdge = 19;
 holeSpacing = holeSpacingEdgeToEdge + holeRadius;
 overlapRatio = .1;
-totalBasketWidth = diameter * Count - (thickness*overlapRatio * Count-2);
+totalBasketWidth = ((diameter+(thickness*2)) * Count) - ((thickness * overlapRatio) * ((Count-1)));
 
 //Subtract hook diameter from these variables to avoid pegs overhanging the edge of the back
 hookCount = ceil((totalBasketWidth - hookDiameter - filletSizeBack) / holeSpacing);

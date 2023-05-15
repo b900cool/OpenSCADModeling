@@ -1,29 +1,27 @@
 use <HollowCylinder.scad>
 
-module parametricRings(count, rows, diameter, height, ringThickness, overlapRatio, filletSize, holeChamferSize)
+module parametricRings(ringCount, ringRows, innerRingDiameter, ringHeight, ringThickness, overlapRatio, filletSize, holeChamferSize){
 // Create Circles
 // Translate to start at X = 0, y = depth
-translate([diameter/2,diameter/2,0]){
-    for (i = [0 : 1 : count - 1])
+    for (i = [0 : 1 : ringCount - 1])
     {
-        for(j = [0 : 1 : rows - 1])
+        for(j = [0 : 1 : ringRows - 1])
         {   
             // Translate each ring in a row by a diameter - a fraction of the thickness to provide some overlap between rings
-            translateX = (i * diameter) - ((ringThickness*overlapRatio) * i);
+            translateX = (i * (innerRingDiameter + ringThickness*2)) - ((ringThickness*overlapRatio) * i) + innerRingDiameter/2 + ringThickness;
             
             // Translate each ring in a column by a diameter - a fraction of the thickness to provide some overlap between rings. Add one to j to get the overlap with the back piece
-            translateY = (j * diameter) - ((ringThickness*overlapRatio) * j + 1);
+            translateY = (j * (innerRingDiameter + ringThickness*2)) - ((ringThickness*overlapRatio) * j) + innerRingDiameter/2 + ringThickness;
             
             translate([translateX, translateY, 0]){
-                hollowCylinder(diameter, height, ringThickness, filletSize, holeChamferSize);
+                hollowCylinder(innerRingDiameter, ringHeight, ringThickness, filletSize, holeChamferSize);
             }
         }
     }
 }
 
-$fn=40;
-diameter = 49;
-height = 15;
-thickness = 16;
+innerRingDiameter = 10;
+ringHeight = 15;
+thickness = 10;
 
-parametricRings(2, 3, diameter, height, thickness, .1, 2, 2);
+parametricRings(3, 3, innerRingDiameter, ringHeight, thickness, .1, 2, 2);

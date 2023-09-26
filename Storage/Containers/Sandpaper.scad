@@ -7,7 +7,7 @@ sandpaperLength = 115;
 buffer = 5;
 boxDepth = 20;
 
-wallThickness = 1;
+wallThickness = 2;
 
 
 
@@ -37,8 +37,18 @@ module sandpaperUnit(sandpaperWidth, sandpaperLength, buffer, boxDepth, wallThic
                 forward(sandpaperSize[1]/2)
                 #boxSlits(boxSize = sandpaperSize, wallThickness = wallThickness);
 
+            up(boxDepth/2)
+                left(sandpaperSize[0]/8 - 5)
+                forward(sandpaperSize[1]/2)
+                #boxSlits(boxSize = sandpaperSize, wallThickness = wallThickness);
+
             down(boxDepth/2 + wallThickness)
                 left(sandpaperSize[0]/2 - 5)
+                forward(sandpaperSize[1]/2)
+                #boxSlits(boxSize = sandpaperSize, wallThickness = wallThickness);
+
+            down(boxDepth/2 + wallThickness)
+                left(sandpaperSize[0]/8 - 5)
                 forward(sandpaperSize[1]/2)
                 #boxSlits(boxSize = sandpaperSize, wallThickness = wallThickness);
 
@@ -48,7 +58,17 @@ module sandpaperUnit(sandpaperWidth, sandpaperLength, buffer, boxDepth, wallThic
                 #boxSlits2(boxSize = sandpaperSize, wallThickness = wallThickness);
 
             down(boxDepth/2)
+                left(sandpaperSize[0]/8 - 5)
+                forward(sandpaperSize[1]/2)
+                #boxSlits2(boxSize = sandpaperSize, wallThickness = wallThickness);
+
+            down(boxDepth/2)
                 left(sandpaperSize[0]/2 - 5)
+                back(sandpaperSize[1]/2 + wallThickness)
+                #boxSlits2(boxSize = sandpaperSize, wallThickness = wallThickness);
+
+            down(boxDepth/2)
+                left(sandpaperSize[0]/8 - 5)
                 back(sandpaperSize[1]/2 + wallThickness)
                 #boxSlits2(boxSize = sandpaperSize, wallThickness = wallThickness);
         }
@@ -76,10 +96,11 @@ module sandpaperUnit(sandpaperWidth, sandpaperLength, buffer, boxDepth, wallThic
 module boxSlits(boxSize, wallThickness){
     location = 0;
     spacing = 5;
-    resize([boxSize[0]/1.5, boxSize[1] - (boxSize[1]/20 + 5), wallThickness])
+    resize([boxSize[0]/3, boxSize[1] - (boxSize[1]/20 + 5), wallThickness])
     for(location = [5:location + boxSize[1]/20 + 5:boxSize[1]]){
-        back(location)
+        back(location){
             cube([boxSize[0]/1.5, boxSize[1]/20, wallThickness]);
+        }
     }
 }
 
@@ -87,7 +108,7 @@ module boxSlits2(boxSize, wallThickness){
     location = 0;
     spacing = 4;
     rotate([90,0,0])
-    resize([boxSize[0]/1.5, boxSize[2] - (boxSize[2]/6 + spacing), wallThickness])
+    resize([boxSize[0]/3, boxSize[2] - (boxSize[2]/6 + spacing), wallThickness])
     for(location = [spacing:location + boxSize[2]/6 + spacing:boxSize[2]]){
         back(location)
             cube([boxSize[0]/1.5, boxSize[2]/6, wallThickness]);
@@ -99,5 +120,5 @@ gritList2 = ["320", "400", "600", "800", "1000"];
 
 for(i = [0:1:len(gritList)-1]){
     up(i * (boxDepth + wallThickness*2))
-        sandpaperUnit(sandpaperWidth = sandpaperWidth, sandpaperLength = sandpaperLength, buffer = buffer, boxDepth = boxDepth, wallThickness = wallThickness, gritText = gritList[i]);
+        sandpaperUnit(sandpaperWidth = sandpaperWidth, sandpaperLength = sandpaperLength, buffer = buffer, boxDepth = boxDepth, wallThickness = wallThickness, gritText = gritList2[i]);
 }

@@ -15,7 +15,7 @@ hookBase = 15;
 hookHeight = 80;
 hookWidth = 50;
 
-
+bottomPlate = [hookWidth, backPlateDepth*3, hookBase];
 backPlate = [hookWidth, backPlateDepth, hookHeight];
 hook = [hookWidth/3, hookOpening*2, hookHeight];
 hookDiff = [hookWidth, hookOpening, hookHeight - hookBase];
@@ -23,8 +23,15 @@ slope = [[0,0,],[0,hookOpening/2],[hookOpening*1.5,0]];
 
 difference(){
 
-    fillet(size=backPlate, fillet=filletSize, edges = EDGES_ALL - EDGES_FRONT){
-        cube(backPlate, center=true);
+    union(){
+        fillet(size=backPlate, fillet=filletSize, edges = EDGES_ALL - EDGES_BACK){
+            cube(backPlate, center=true);
+        }
+
+        forward(backPlateDepth)down(hookHeight/2-hookBase/2)
+        fillet(size=bottomPlate, fillet=filletSize, edges = EDGES_ALL - EDGES_BACK - EDGES_TOP){
+            #cube(bottomPlate, center=true);
+        }
     }
     
     forward(backPlateDepth/2)down(10)
@@ -60,7 +67,6 @@ forward(backPlateDepth/2 + hookOpening){
     }
     
 }
-
 
 
 module screw(headDiameter, screwDiameter, headDepth, screwLength){

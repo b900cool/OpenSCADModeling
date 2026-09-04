@@ -1,4 +1,4 @@
-$modulePath = Join-Path$PSScriptRoot '\GithubLibraries.psd1'
+$modulePath = Join-Path $PSScriptRoot '\GithubLibraries.psd1'
 Import-Module -Name $modulePath
 
 Save-GitHubRepository -Owner rcolyer -Project threads-scad

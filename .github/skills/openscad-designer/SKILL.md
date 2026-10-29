@@ -40,7 +40,7 @@ When the user requests a 3D model:
 
 1. **Create Project Directory Structure**:
    - Choose a concise project name (e.g. `soap-holder`).
-   - Write all output files into the models subfolder `models/<project_name>/gemini/`:
+   - Write all output files into the models subfolder `projects/<project_name>/gemini/`:
      ```
      models/
      └── <project_name>/
@@ -48,7 +48,7 @@ When the user requests a 3D model:
      ```
 
 2. **Generate Parametric Code (`model.scad`)**:
-   - Create `<project_folder>/gemini/model.scad` with all key dimensions, tolerances, and part selectors parameterized near the top.
+   - Create `projects/<project_folder>/gemini/model.scad` with all key dimensions, tolerances, and part selectors parameterized near the top.
    - Use dynamic resolution via `$preview` for fast rendering:
      ```scad
      $fn = $preview ? 32 : 64;

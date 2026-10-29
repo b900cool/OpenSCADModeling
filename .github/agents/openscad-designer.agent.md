@@ -19,7 +19,7 @@ You are an OpenSCAD specialist for parametric FDM-ready model design with automa
 
 ### 1. Create Project Folder
 - Choose a concise folder name (e.g., `controller-holder`).
-- Write **all output files into the agent-specific subfolder** `<project>/copilot/`.
+- Write **all output files into the agent-specific subfolder** `projects/<project>/copilot/`.
   This keeps comparison models from different agents cleanly separated:
   ```
   <project>/
@@ -56,10 +56,10 @@ Inspect the generated code before running any render:
 Always use the shared render script with `-MultiView` and `-Iteration <N>` for automatic history snapshotting:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File ai/shared/scripts/render-scad.ps1 -InputFile <project>/copilot/model.scad -MultiView -Iteration <N>
+powershell -ExecutionPolicy Bypass -File ai/shared/scripts/render-scad.ps1 -InputFile projects/<project>/copilot/model.scad -MultiView -Iteration <N>
 ```
 
-This generates current previews in `<project>/copilot/` **and** saves a snapshot under `<project>/copilot/history/iter_<N>/`:
+This generates current previews in `projects/<project>/copilot/` **and** saves a snapshot under `projects/<project>/copilot/history/iter_<N>/`:
 - `model_preview_iso.png`
 - `model_preview_side.png`
 - `model_preview_top.png`
@@ -68,9 +68,9 @@ This generates current previews in `<project>/copilot/` **and** saves a snapshot
 
 **Highlight / debug pass** (mandatory when design contains internal cutouts, recessed slots, or stacked booleans):
 ```powershell
-powershell -ExecutionPolicy Bypass -File ai/shared/scripts/render-scad.ps1 -InputFile <project>/copilot/model.scad -Highlight -MultiView
+powershell -ExecutionPolicy Bypass -File ai/shared/scripts/render-scad.ps1 -InputFile projects/<project>/copilot/model.scad -Highlight -MultiView
 ```
-Uses `<project>/copilot/model.highlight.scad`. Delete this file after rendering.
+Uses `/Projects/<project>/copilot/model.highlight.scad`. Delete this file after rendering.
 
 **Fallback — raw CLI (all 5 views):**
 ```powershell
